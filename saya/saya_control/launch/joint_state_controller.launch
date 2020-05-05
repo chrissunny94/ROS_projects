@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- Load joint controller configurations from yaml file to parameter server -->
+  <rosparam file="$(find saya_control)/config/joint_state_controller.yaml" command="load"/> 
+
+  <!-- load the controllers -->
+  <node name="joint_state_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/saya" args="joint_state_controller"/>
+
+  <!-- robot_state_punlisher node -->
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+    <param name="publish_frequency" type="double" value="100.0" />
+    <!-- <param name="publish_frequency" type="double" value="50.0" /> -->
+    <remap from="/joint_states" to="/saya/joint_states"/>
+  </node>
+  
+</launch>

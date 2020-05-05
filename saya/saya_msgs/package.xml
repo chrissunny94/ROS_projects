@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package>
+  <name>saya_msgs</name>
+  <version>0.0.1</version>
+  <description >
+  This contains the messages, actions and services for interfacing with the saya
+  sayathrough ROS.
+  </description>
+
+  <author email="chrissunny94@gmail.com">chrissunny</author>
+  <maintainer email="assistant@moveit.ros.org">MoveIt Setup Assistant</maintainer>
+  
+  <license>BSD</license>
+
+  <url>http://ros.org/wiki/jaco</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>message_generation</build_depend>
+  <build_depend>actionlib</build_depend>
+  <build_depend>actionlib_msgs</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+
+  <run_depend>message_runtime</run_depend>
+  <run_depend>actionlib</run_depend>
+  <run_depend>actionlib_msgs</run_depend>
+  <run_depend>geometry_msgs</run_depend>
+
+  <export>
+  </export>
+</package>

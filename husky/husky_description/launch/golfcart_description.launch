@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="config" default="base" />
+  <arg name="robot_namespace" default="/"/>
+  <arg name="laser_enabled" default="true"/>
+  <arg name="kinect_enabled" default="true"/>
+  <arg name="urdf_extras" default="false"/>
+
+  <param name="robot_description"
+         command="$(find xacro)/xacro '$(find husky_description)/urdf/golfcart.urdf.xacro'
+                    --inorder" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  <node pkg="tf" type="static_transform_publisher" name="orb_slam_link" args="0 0 0 0 0 0 /base_link /orb_slam2/camera 100"/> 
+  <node pkg="tf" type="static_transform_publisher" name="orb_slam_world_link" args="0 0 0 0 0 0 /odom /orb_slam2/world 100"/> 
+</launch>

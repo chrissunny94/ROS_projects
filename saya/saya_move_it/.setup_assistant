@@ -1,0 +1,10 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: saya_description
+    relative_path: robots/saya_description.urdf.xacro
+  SRDF:
+    relative_path: config/saya.srdf
+  CONFIG:
+    author_name: Chris Thaliyth
+    author_email: chrissunny94@gmail.com
+    generated_timestamp: 1525661510

@@ -1,0 +1,14 @@
+<?xml version="1.0" ?><sdf version="1.5">
+  <model name="fiducials-page-001">
+    <static>true</static>
+    <link name="link">
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://fiducials-page-001/meshes/fiducials-page-001.dae</uri>
+          <scale>1.0 1.0 1.0</scale></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+</sdf>

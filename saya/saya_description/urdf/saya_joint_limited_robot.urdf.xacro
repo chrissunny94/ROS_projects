@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro"
+       name="saya" >
+
+  <!-- common stuff -->
+  <xacro:include filename="$(find saya_description)/urdf/common.gazebo.xacro" />
+
+  <!-- saya -->
+  <xacro:include filename="$(find saya_description)/urdf/saya.urdf.xacro" />
+
+  
+  <link name="world" />
+
+  <joint name="world_joint" type="fixed">
+    <parent link="world" />
+    <child link = "base_link" />
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+  </joint>
+
+</robot>

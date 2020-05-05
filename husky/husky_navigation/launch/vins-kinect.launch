@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="config_path" default = "$(find feature_tracker)/../config/kinect/kinect_config.yaml" />
+	  <arg name="vins_path" default = "$(find feature_tracker)/../config/../" />
+    
+    <node name="feature_tracker" pkg="feature_tracker" type="feature_tracker" output="log">
+        <param name="config_file" type="string" value="$(arg config_path)" />
+        <param name="vins_folder" type="string" value="$(arg vins_path)" />
+    </node>
+
+    <node name="vins_estimator" pkg="vins_estimator" type="vins_estimator" output="screen">
+       <param name="config_file" type="string" value="$(arg config_path)" />
+       <param name="vins_folder" type="string" value="$(arg vins_path)" />
+    </node>
+
+     <!-- Start EKF for localization-->
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization">
+    <rosparam command="load" file="$(find husky_control)/config/vins_localization.yaml" />
+    <remap from="odometry/filtered" to="/vins_odometry/filtered"/>
+  </node>
+ 
+
+</launch>

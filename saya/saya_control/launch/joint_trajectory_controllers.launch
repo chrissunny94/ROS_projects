@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<launch>
+  <!-- Controller configuration -->
+  <rosparam command="load" file="$(find saya_control)/config/joint_trajectory_controllers.yaml" />
+
+  <!-- Spawn whole-body joint trajectory controllers -->
+  <node name="joint_trajectory_controllers_spawner"
+  pkg="controller_manager" type="spawner" output="screen"
+  args="right_leg_controller
+  saya_controller" />
+
+</launch>

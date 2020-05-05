@@ -1,0 +1,38 @@
+<!--
+   Run the 3d fiducial localization for a raspi
+-->
+<launch>
+  <arg name="mapping_mode" default="false"/>
+
+ 
+  
+  <!-- Fiducial detection -->
+  <include file="$(find aruco_detect)/launch/aruco_detect.launch">
+    <arg name="camera" value="/camera/rgb"/>
+    <arg name="image" value="image_raw"/>
+    <arg name="transport" value="compressed"/>
+    
+    <!-- fiducial_len -->
+    <arg name="fiducial_len" value="0.140" />
+  </include>
+
+  <!-- Fiducial slam -->
+  <include file="$(find fiducial_slam)/launch/fiducial_slam.launch">
+    <arg name="map_frame" value="map"/>
+    <arg name="odom_frame" value="odom"/>
+    <arg name="base_frame" value="base_link"/>
+    <arg name="future_date_transforms" value="0.5"/>
+  </include>
+  
+  <!--<node pkg="robot_localization" type="ekf_localization_node" name="ekf_se" clear_params="true">
+    <rosparam command="load" file="$(find fiducial_slam)/params/ekf_template.yaml" />
+
+ Placeholder for output topic remapping 
+    <remap from="odometry/filtered" to="/fiducial_odometry/filtered"/>
+    
+   
+
+</node>-->
+
+<!--<node pkg="tf" type="static_transform_publisher" name="orb_slam_world_link" args="0 0 0 0 0 0 /map /odom 100"/> -->
+</launch>
